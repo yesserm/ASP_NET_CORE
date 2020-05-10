@@ -1,0 +1,30 @@
+@model List<proyecto_2.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<div class="row mt-2">
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        @Html.DisplayFor(model => Model[i]);
+    }
+</div>
+
+@section LateralIzquierdo{
+    <div class="mb-4 mt-2">
+        <text>Interfaz de @ViewData["Title"]</text>
+       
+        <div class="list-group">
+            <a asp-controller="Clientes" asp-action="Create" class="list-group-item list-group-item-action">Agregar</a>
+            <a asp-controller="Clientes" asp-action="Comments" class="list-group-item list-group-item-action">Comentar</a>
+        </div>
+    </div>
+}
+
+@section LateralDerecho{
+    @if(ViewBag.IdSeleccionado != 0)
+    {
+        @await Component.InvokeAsync("Comentario", new { id = @ViewBag.IdSeleccionado });
+    }
+}

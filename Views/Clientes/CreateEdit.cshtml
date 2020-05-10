@@ -1,0 +1,32 @@
+@model proyecto_2.Models.Cliente
+
+@{
+    var Generos = (List<SelectListItem>)ViewData["Generos"];
+    var Action = ViewData["Action"];
+}
+
+<div class="card col-md-4 offset-md-4 p-0 mt-2">
+    <h5 class="card-reader">Clientes</h5>
+    <div class="card-body">
+        <form asp-controller="Clientes" asp-action="@Action" method="post">
+            <input asp-for="@Model.Id">
+            <div class="form-group">
+                <label>Nombre</label>
+                <input asp-for="@Model.Nombre" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input asp-for="@Model.Email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input asp-for="@Model.Telefono" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Sexo</label>
+                <select asp-for="@Model.Sexo" class="form-control" asp-items="@Generos"></select>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+@model List<proyecto_2.Models.Comentario>
+
+<h5>Comentario de @ViewBag.NombreSeleccionado</h5>
+@foreach (var comentario in Model)
+{
+    <div class="alert alert-warning" role="aleryt">
+        @comentario.Texto
+    </div>
+}

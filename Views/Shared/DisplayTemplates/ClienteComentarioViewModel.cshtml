@@ -1,0 +1,27 @@
+@model proyecto_2.ViewModels.ClienteComentarioViewModel
+
+@{
+    var Imagen = "";
+    var fondo = "";
+    if(Model.Sexo == "Masculino")
+    {
+        Imagen = "user.png";
+        fondo = "alert-info";
+    } else {
+        Imagen = "user_female.png";
+        fondo = "alert-danger";        
+    }
+}
+
+<div class="alert @fondo pt-0 pb-0 col-md-8" role="alert">
+    <div class="row">
+        <div class="col-md-2">
+            <img class="card-img-top img-fluid mb-0" style="width:50px;" src="/imagen/@Imagen" alt="card image cap">
+        </div>
+        <div class="col-md-10 bg-light">
+            <h6>@Model.Nombre</h6>
+            <small>@Model.Texto</small>
+            <p class="text-right mb-0"><small>@Model.Fecha</small></p>
+        </div>
+    </div>
+</div>
